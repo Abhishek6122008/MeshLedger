@@ -203,7 +203,7 @@ My FINERACT-2400 (partial standing-instruction transfers) uses exactly this meth
 - Whatever is left is released on the next sync, or when the hold expires.
 - This gives receivers something real to check offline. It is the same idea as UPI Lite's pre-funded wallet, built with a bank's hold.
 
-**What I changed.** Fineract keeps one running "on hold" total per account. MeshLedger keeps **one row per hold**, because each hold belongs to one device and one signed snapshot, and has its own expiry.
+**What I changed.** Fineract records holds as hold and release transactions on the account, plus a running "on hold" total. MeshLedger gives **each hold its own row**, with its device, its signed snapshot, the amount used so far, and its own expiry. A hold here is a promise to one phone, not just a reserved amount.
 
 ### 9. Value date vs booking date, and how far back is allowed
 
@@ -273,6 +273,6 @@ These are good ideas that didn't make the cut for the 30 days. They're written d
 | Fineract has | Why MeshLedger doesn't |
 |---|---|
 | **Partial transfers** (my FINERACT-2400 `allow_partial_transfer`) | Right for a scheduled sweep from savings. Wrong for a payment someone already accepted: a ₹500 payment either settles in full or not at all. |
-| **The full command framework** (legacy `CommandWrapper`, and the new typed `fineract-command`; I worked on its migration rules in FINERACT-2941/2942) | Fineract has hundreds of write operations, which is where a command bus pays for itself. MeshLedger has one write path, so it would only be ceremony. |
+| **The full command framework** (legacy `CommandWrapper`, and the new typed `fineract-command`; I worked on its migration rules in FINERACT-2941/2942) | Fineract has 416 distinct `@CommandType` handlers on `develop`, which is where a command bus pays for itself. MeshLedger has one write path, so it would only be ceremony. |
 | **Multi-tenancy** | One demo bank. |
 | **GL chart of accounts** | See lesson 3. |
