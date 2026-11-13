@@ -6,6 +6,17 @@ This repo is the **server side** of that system, plus a software simulator of th
 
 > **Where this came from.** MeshLedger started life as my earlier project, RupeeRelay. The `v1-baseline` tag is that code rebuilt here step by step, renamed but with the same behaviour. Everything after it is v2.
 
+## Docs
+
+Plain-language docs live in [`docs/`](docs/README.md):
+- [overview](docs/01-overview.md);
+- [high-level](docs/02-hld.md) and [low-level](docs/03-lld.md) design;
+- [money safety](docs/04-money-safety.md);
+- [the AI layer](docs/05-ai-layer.md);
+- [lessons from Apache Fineract](docs/06-fineract-lessons.md);
+- the day-by-day [roadmap](docs/07-roadmap.md);
+- a [glossary](docs/08-glossary.md).
+
 ---
 
 ## Table of Contents
